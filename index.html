@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtLog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+    <div class="logoContainer">
+        <a href="#" class="logo-link">
+            <img src="images/logo.png" alt="Logo de Art log" class="logo">
+        </a>
+    </div>
+        <nav class="menuContainer">
+            <a href="#" class="active">Opción 1</a>
+            <a href="#">Opción 2</a>
+            <a href="#">Opción 3</a>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="main-flex">
+        <div class="main-text">
+            <h1>ArtLog</h1>
+            <a href="#descripcion-artlog" class="main-btn">Saber más</a>
+        </div>
+            <img src="images/chica1.png" alt="Chica pintando" class="chica-img">
+    </div>
+</main>
+<section class="about-artlog">
+    <div class="pastel-section"></div>
+    <a href="#" class="about-logo-link">
+        <img src="images/logo.png" alt="Logo ArtLog" class="about-logo">
+    </a>
+    <div class="about-description-container" id="descripcion-artlog">
+        <div class="about-description">
+            ArtLog es una plataforma web y app móvil para artistas de todas las disciplinas que quieren compartir y explorar el proceso detrás de una obra. Más que una galería, ArtLog es un espacio para mostrar cómo se crea: bocetos, paletas, decisiones técnicas y más.
+        </div>
+    </div>
+</section>
+
+<section class="white-section">
+  <div class="white-content">
+    <h2 class="white-title">¿Qué puedes hacer en ArtLog?</h2>
+    <div class="white-actions">
+        <button class="white-btn" data-img="publicar-foto.png">Publicar</button>
+        <button class="white-btn" data-img="aprender-foto.png">Aprender</button>
+        <button class="white-btn" data-img="conectar-foto.png">Conectar</button>
+        <button class="white-btn" data-img="impulsar-foto.png">Impulsar</button>
+    </div>
+    <div class="white-img-container">
+      <img id="white-action-img" src="images/publicar-foto.png" alt="Acción ArtLog" class="white-action-img">
+  </div>
+</section>
+
+<script> // Cuando recarga te lleva al inicio
+  window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+  };
+</script>
+
+<script>
+  document.querySelectorAll('.logo-link, .about-logo-link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  });
+</script>
+
+<script>
+  // Scroll arriba con logo
+  document.querySelectorAll('.logo-link, .about-logo-link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  });
+
+  // Cambio de imagen en los botones
+  document.querySelectorAll('.white-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var imgName = btn.getAttribute('data-img');
+      var img = document.getElementById('white-action-img');
+      img.classList.add('animating');
+      setTimeout(function() {
+        img.src = 'images/' + imgName;
+        img.onload = function() {
+          img.classList.remove('animating');
+        };  
+      }, 200);
+    });
+  });
+</script>
+
+</body>
+</html>
