@@ -38,7 +38,7 @@ body {
     left: 0;
     width: 100%;
     height: 80px;
-    padding: 0 5%;
+    padding: 0 4%;
     background-color: #ede6fa;
     box-shadow: 0 2px 12px rgba(182,166,247,0.12);
     display: flex;
@@ -48,55 +48,99 @@ body {
     /* Mejoras para zoom */
     min-height: 60px;
     max-height: 100px;
+    /* Prevenir overflow */
+    overflow: visible;
+    box-sizing: border-box;
 }
 
 .logoContainer {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
+    z-index: 1001;
 }
 
 .logo {
     width: 60px; 
     height: auto;
-    
+    display: block;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.logo:hover {
+    transform: scale(1.05);
 }
 
 .menuContainer {
   display: flex;
-  gap: 2rem; 
+  gap: 1.5rem; 
   align-items: center;
   /* Mejoras para estabilidad */
   flex-wrap: nowrap;
-  justify-content: flex-end;
   white-space: nowrap;
+  /* Mejor posicionamiento */
+  flex-shrink: 0;
+  padding-left: 1rem;
+  z-index: 1001;
 }
 
 .menuContainer a {
   color: #a084ee;
-  background: #f5edff;
-  border: none;
-  border-radius: 20px;
-  padding: 12px 32px;
-  font-size: 18px;
+  background: #ffffff;
+  border: 2px solid #e6d6fa;
+  border-radius: 25px;
+  padding: 10px 22px;
+  font-size: 15px;
   font-weight: 600;
   text-decoration: none;
-  margin: 0 8px;
+  margin: 0;
   box-shadow: 0 2px 8px 0 rgba(182,166,247,0.10);
   transition: 
-    background 0.2s,
-    color 0.2s,
-    box-shadow 0.2s,
-    transform 0.16s cubic-bezier(.4,1.5,.5,1);
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s cubic-bezier(.4,1.5,.5,1);
   display: inline-block;
+  position: relative;
+  overflow: hidden;
+  /* Asegurar que no se corten */
+  min-width: fit-content;
+  white-space: nowrap;
+  text-align: center;
 }
 
+
+.menuContainer a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(160,132,238,0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.menuContainer a:hover::before {
+    left: 100%;
+}
 
 .menuContainer a:hover,
 .menuContainer a.active {
   background: #e6d6fa;
   color: #6f01c9;
+  border-color: #a084ee;
   box-shadow: 0 4px 16px 0 rgba(182,166,247,0.18);
-  transform: scale(1.04);
+  transform: translateY(-2px);
+}
+
+/* Active state priority */
+.menuContainer a.active {
+  background: #e6d6fa !important;
+  color: #6f01c9 !important;
+  border-color: #a084ee !important;
 }
 
 
@@ -286,28 +330,29 @@ html {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin: 120px auto 0 auto;
-    max-width: 1600px;
-    padding: 0 40px 0 20px;
+    margin: 120px 0 0 0;
+    width: 100vw;
+    padding: 0 5% 0 5%;
     gap: 150px; 
     z-index: 11;
     position: relative; 
-    min-height: 400px;
+    min-height: 600px;
     /* Prevenir desbordamiento */
-    width: 100%;
     box-sizing: border-box;
     overflow: hidden;
+    left: 50%;
+    margin-left: -50vw;
 }
 
 .pastel-section {
     width: 100vw;
-    height: 600px; 
+    height: 800px; 
     background: #f4f6fa;
     position: absolute;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     z-index: 10;
     pointer-events: none;
 }
@@ -327,18 +372,18 @@ html {
     background: #e9ecf3; 
     border-radius: 32px;
     box-shadow: 0 4px 24px rgba(182,166,247,0.08);
-    padding: 40px 48px;
-    font-size: 1.8rem;
+    padding: 60px 60px;
+    font-size: 2rem;
     color: #6b6b7a;
     line-height: 1.7;
     font-weight: 500;
-    max-width: 750px;
+    max-width: 850px;
     font-family: 'Inter', sans-serif;
     text-align: center;
 }
 
 .about-logo {
-    width: 380px;
+    width: 420px;
     height: auto;
     margin-right: 40px; 
     flex-shrink: 0;
@@ -943,6 +988,26 @@ html {
 /* ===== RESPONSIVE DESIGN ===== */
 
 /* Extra Large screens */
+@media (min-width: 1600px) {
+    .header {
+        padding: 0 5%;
+        max-width: 2000px;
+        margin: 0 auto;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .menuContainer {
+        gap: 2rem;
+    }
+    
+    .menuContainer a {
+        padding: 12px 26px;
+        font-size: 16px;
+    }
+}
+
+/* Extra Large screens */
 @media (max-width: 1600px) {
     .main-flex {
         padding: 0 3%;
@@ -1298,16 +1363,38 @@ html {
     }
 }
 
-/* Small-Medium screens */
-@media (max-width: 900px) {
+/* Medium-Large screens */
+@media (max-width: 1024px) and (min-width: 901px) {
+    .header {
+        padding: 0 3%;
+    }
+    
     .menuContainer {
-        gap: 0.8rem;
+        gap: 1.2rem;
+        padding-left: 0.8rem;
     }
     
     .menuContainer a {
-        padding: 10px 20px;
-        font-size: 16px;
-        margin: 0 4px;
+        padding: 9px 20px;
+        font-size: 15px;
+    }
+}
+
+/* Small-Medium screens */
+@media (max-width: 900px) {
+    .header {
+        padding: 0 3%;
+        height: 75px;
+    }
+    
+    .menuContainer {
+        gap: 1rem;
+        padding-left: 0.5rem;
+    }
+    
+    .menuContainer a {
+        padding: 8px 18px;
+        font-size: 14px;
     }
     
     main h1 {
@@ -1404,7 +1491,7 @@ html {
 @media (max-width: 768px) {
     .header {
         height: 70px;
-        padding: 0 4%;
+        padding: 0 2.5%;
     }
     
     .logo {
@@ -1412,13 +1499,14 @@ html {
     }
     
     .menuContainer {
-        gap: 0.5rem;
+        gap: 0.8rem;
+        padding-left: 0.3rem;
     }
     
     .menuContainer a {
-        padding: 8px 16px;
-        font-size: 14px;
-        margin: 0 2px;
+        padding: 7px 16px;
+        font-size: 13px;
+        border-radius: 20px;
     }
     
     .main-flex {
@@ -1513,17 +1601,22 @@ html {
 @media (max-width: 600px) {
     .header {
         height: 65px;
-        padding: 0 3%;
+        padding: 0 2%;
+    }
+    
+    .logo {
+        width: 45px;
     }
     
     .menuContainer {
-        gap: 0.3rem;
+        gap: 0.6rem;
+        padding-left: 0.2rem;
     }
     
     .menuContainer a {
-        padding: 6px 12px;
-        font-size: 13px;
-        margin: 0 1px;
+        padding: 6px 14px;
+        font-size: 12px;
+        border-radius: 18px;
     }
     
     main h1 {
@@ -1568,22 +1661,22 @@ html {
 /* Very small screens */
 @media (max-width: 480px) {
     .header {
-        height: 70px;
+        height: 65px;
         padding: 0 2%;
     }
     
     .logo {
-        width: 45px;
+        width: 42px;
     }
     
     .menuContainer {
-        gap: 0.3rem;
+        gap: 0.4rem;
+        padding-left: 0.1rem;
     }
     
     .menuContainer a {
         padding: 6px 12px;
         font-size: 12px;
-        margin: 0 1px;
         border-radius: 16px;
     }
     
@@ -1694,22 +1787,22 @@ html {
 /* Extra small screens */
 @media (max-width: 360px) {
     .header {
-        height: 65px;
+        height: 60px;
         padding: 0 1.5%;
     }
     
     .logo {
-        width: 40px;
+        width: 38px;
     }
     
     .menuContainer {
-        gap: 0.2rem;
+        gap: 0.3rem;
+        padding-left: 0.1rem;
     }
     
     .menuContainer a {
-        padding: 5px 8px;
+        padding: 5px 10px;
         font-size: 11px;
-        margin: 0;
         border-radius: 14px;
     }
     
@@ -1750,31 +1843,6 @@ html {
     .white-btn {
         padding: 14px 28px;
         font-size: 1rem;
-    }
-}
-
-/* Menu adjustments for intermediate resolutions */
-@media (max-width: 1150px) and (min-width: 769px) {
-    .menuContainer {
-        gap: 1.2rem;
-    }
-    
-    .menuContainer a {
-        padding: 10px 24px;
-        font-size: 16px;
-        margin: 0 4px;
-    }
-}
-
-@media (max-width: 1050px) and (min-width: 769px) {
-    .menuContainer {
-        gap: 1rem;
-    }
-    
-    .menuContainer a {
-        padding: 8px 20px;
-        font-size: 15px;
-        margin: 0 2px;
     }
 }
 
@@ -1822,10 +1890,16 @@ html {
 @media (min-resolution: 2dppx) {
     .header {
         height: 70px;
+        padding: 0 3%;
     }
     
     .logo {
         width: 50px;
+    }
+    
+    .menuContainer {
+        gap: 0.8rem;
+        padding-left: 0.5rem;
     }
     
     .menuContainer a {
