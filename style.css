@@ -339,9 +339,11 @@ html {
     min-height: 600px;
     /* Prevenir desbordamiento */
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: visible;
     left: 50%;
     margin-left: -50vw;
+    /* Mejoras para responsive */
+    flex-wrap: nowrap;
 }
 
 .pastel-section {
@@ -380,6 +382,11 @@ html {
     max-width: 850px;
     font-family: 'Inter', sans-serif;
     text-align: center;
+    /* Mejoras para responsive */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .about-logo {
@@ -389,6 +396,10 @@ html {
     flex-shrink: 0;
     display: block;
     margin-top: 20px;
+    /* Mejoras para responsive */
+    object-fit: contain;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .white-section {
@@ -403,7 +414,7 @@ html {
     align-items: center;
     justify-content: center;
     padding: 60px 0;
-    margin-top: 80px;
+    margin-top: 200px;
 }
 
 .benefits-and-actions {
@@ -1100,7 +1111,7 @@ html {
     
     .white-section {
         padding: 50px 0;
-        margin-top: 30px;
+        margin-top: 150px;
     }
     
     .benefits-and-actions {
@@ -1378,6 +1389,48 @@ html {
         padding: 9px 20px;
         font-size: 15px;
     }
+    
+    .about-artlog {
+        flex-direction: column;
+        text-align: center;
+        gap: 50px;
+        padding: 0;
+        margin: 80px 0 0 0;
+        justify-content: center;
+        max-width: 100%;
+        width: 100%;
+        left: 0;
+        margin-left: 0;
+        box-sizing: border-box;
+        position: relative;
+        overflow: visible;
+    }
+    
+    .about-description {
+        order: 2;
+        margin: 0 auto;
+        max-width: calc(100% - 80px);
+        padding: 25px 30px;
+        width: auto;
+        box-sizing: border-box;
+    }
+    
+    .about-logo {
+        width: 280px;
+        margin: 0 auto;
+        order: 1;
+        max-width: calc(100% - 80px);
+        margin-right: 0;
+        box-sizing: border-box;
+    }
+    
+    .pastel-section {
+        height: 500px;
+        width: 100vw;
+        left: 50%;
+        margin-left: -50vw;
+        position: absolute;
+    }
 }
 
 /* Small-Medium screens */
@@ -1410,9 +1463,47 @@ html {
         height: 400px;
     }
     
+    .about-artlog {
+        flex-direction: column;
+        text-align: center;
+        gap: 45px;
+        padding: 0;
+        margin: 70px 0 0 0;
+        justify-content: center;
+        max-width: 100%;
+        width: 100%;
+        left: 0;
+        margin-left: 0;
+        box-sizing: border-box;
+        position: relative;
+        overflow: visible;
+    }
+    
     .about-description {
         font-size: 1.5rem;
         padding: 28px 32px;
+        max-width: calc(100% - 60px);
+        margin: 0 auto;
+        order: 2;
+        width: auto;
+        box-sizing: border-box;
+    }
+    
+    .about-logo {
+        width: 260px;
+        margin: 0 auto;
+        order: 1;
+        max-width: calc(100% - 60px);
+        margin-right: 0;
+        box-sizing: border-box;
+    }
+    
+    .pastel-section {
+        height: 460px;
+        width: 100vw;
+        left: 50%;
+        margin-left: -50vw;
+        position: absolute;
     }
     
     .benefits-title, .white-title {
@@ -1537,25 +1628,49 @@ html {
     }
     
     .about-artlog {
-        margin: 60px auto 0 auto;
-        gap: 40px;
-        padding: 0 5%;
+        margin: 60px 0 0 0;
+        gap: 35px;
+        padding: 0;
         min-height: auto;
         max-width: 100%;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        overflow: visible;
+        width: 100%;
+        left: 0;
+        margin-left: 0;
+        box-sizing: border-box;
+        position: relative;
     }
     
     .about-description {
-        font-size: 1.3rem;
-        padding: 25px 30px;
-        max-width: 95%;
+        font-size: 1.25rem;
+        padding: 30px 25px;
+        max-width: calc(100% - 40px);
         order: 2;
+        margin: 0 auto;
+        border-radius: 24px;
+        line-height: 1.6;
+        width: auto;
+        box-sizing: border-box;
     }
     
     .about-logo {
-        width: 250px;
+        width: 240px;
         margin: 0 auto;
         order: 1;
-        max-width: 95%;
+        max-width: calc(100% - 40px);
+        margin-right: 0;
+        box-sizing: border-box;
+    }
+    
+    .pastel-section {
+        height: 480px;
+        width: 100vw;
+        left: 50%;
+        margin-left: -50vw;
+        position: absolute;
     }
     
     .benefits-content, .white-content {
@@ -1620,27 +1735,63 @@ html {
     }
     
     main h1 {
-        font-size: 3.5rem;
+        font-size: 3.2rem;
         margin-bottom: 2.5rem;
     }
     
     .main-btn {
-        padding: 24px 48px;
-        font-size: 1.5rem;
+        padding: 22px 44px;
+        font-size: 1.4rem;
         margin-top: 3rem;
     }
     
     .chica-img {
-        height: 350px;
+        height: 330px;
+    }
+    
+    .about-artlog {
+        margin: 50px 0 0 0;
+        gap: 30px;
+        padding: 0;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        min-height: auto;
+        overflow: visible;
+        width: 100%;
+        left: 0;
+        margin-left: 0;
+        box-sizing: border-box;
+        position: relative;
     }
     
     .about-description {
-        font-size: 1.3rem;
-        padding: 25px 22px;
+        font-size: 1.15rem;
+        padding: 25px 20px;
+        line-height: 1.65;
+        border-radius: 20px;
+        max-width: calc(100% - 40px);
+        margin: 0 auto;
+        order: 2;
+        width: auto;
+        box-sizing: border-box;
     }
     
     .about-logo {
-        width: 250px;
+        width: 200px;
+        margin: 0 auto;
+        order: 1;
+        max-width: calc(100% - 40px);
+        margin-right: 0;
+        box-sizing: border-box;
+    }
+    
+    .pastel-section {
+        height: 420px;
+        width: 100vw;
+        left: 50%;
+        margin-left: -50vw;
+        position: absolute;
     }
     
     .benefits-title, .white-title {
@@ -1681,48 +1832,71 @@ html {
     }
     
     .main-flex {
-        padding: 100px 3% 20px 3%;
+        padding: 90px 3% 20px 3%;
     }
     
     main h1 {
-        font-size: 3rem;
-        margin-bottom: 2.5rem;
+        font-size: 2.8rem;
+        margin-bottom: 2rem;
         margin-top: 0;
         max-width: 100%;
+        line-height: 1.2;
     }
     
     .main-btn {
-        padding: 24px 48px;
-        font-size: 1.5rem;
-        margin-top: 3rem;
+        padding: 20px 40px;
+        font-size: 1.3rem;
+        margin-top: 2.5rem;
     }
     
     .chica-img {
-        height: 320px;
+        height: 280px;
         margin-top: 0;
     }
     
     .about-artlog {
-        margin: 60px auto 0 auto;
-        gap: 30px;
-        padding: 0 15px;
+        margin: 40px 0 0 0;
+        gap: 25px;
+        padding: 0;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        min-height: auto;
+        overflow: visible;
+        width: 100%;
+        left: 0;
+        margin-left: 0;
+        box-sizing: border-box;
+        position: relative;
     }
     
     .about-description {
-        font-size: 1.2rem;
-        padding: 25px 20px;
+        font-size: 1.1rem;
+        padding: 20px 18px;
         line-height: 1.6;
         order: 2;
+        margin: 0 auto;
+        max-width: calc(100% - 40px);
+        border-radius: 18px;
+        width: auto;
+        box-sizing: border-box;
     }
     
     .about-logo {
-        width: 220px;
+        width: 180px;
         margin: 0 auto;
         order: 1;
+        max-width: calc(100% - 40px);
+        margin-right: 0;
+        box-sizing: border-box;
     }
     
     .pastel-section {
-        height: 400px;
+        height: 380px;
+        width: 100vw;
+        left: 50%;
+        margin-left: -50vw;
+        position: absolute;
     }
     
     .white-section {
@@ -1806,34 +1980,71 @@ html {
         border-radius: 14px;
     }
     
-    .about-artlog {
-        margin: 50px auto 0 auto;
-        gap: 20px;
-        padding: 0 10px;
-    }
-    
-    .about-description {
-        font-size: 1.1rem;
-        padding: 20px 15px;
-        border-radius: 24px;
-    }
-    
-    .about-logo {
-        width: 180px;
-    }
-    
-    .pastel-section {
-        height: 350px;
+    .main-flex {
+        padding: 80px 2% 15px 2%;
     }
     
     main h1 {
-        font-size: 2.5rem;
+        font-size: 2.3rem;
+        margin-bottom: 1.5rem;
         margin-top: 0;
+        line-height: 1.1;
     }
     
     .main-btn {
-        padding: 20px 40px;
-        font-size: 1.3rem;
+        padding: 18px 35px;
+        font-size: 1.2rem;
+        margin-top: 2rem;
+    }
+    
+    .chica-img {
+        height: 240px;
+        margin-top: 0;
+    }
+    
+    .about-artlog {
+        margin: 30px 0 0 0;
+        gap: 20px;
+        padding: 0;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        min-height: auto;
+        overflow: visible;
+        width: 100%;
+        left: 0;
+        margin-left: 0;
+        box-sizing: border-box;
+        position: relative;
+    }
+    
+    .about-description {
+        font-size: 1rem;
+        padding: 18px 15px;
+        border-radius: 16px;
+        line-height: 1.55;
+        order: 2;
+        margin: 0 auto;
+        max-width: calc(100% - 30px);
+        width: auto;
+        box-sizing: border-box;
+    }
+    
+    .about-logo {
+        width: 150px;
+        margin: 0 auto;
+        order: 1;
+        max-width: calc(100% - 30px);
+        margin-right: 0;
+        box-sizing: border-box;
+    }
+    
+    .pastel-section {
+        height: 320px;
+        width: 100vw;
+        left: 50%;
+        margin-left: -50vw;
+        position: absolute;
     }
     
     .benefits-title, .white-title {
@@ -1843,6 +2054,54 @@ html {
     .white-btn {
         padding: 14px 28px;
         font-size: 1rem;
+    }
+}
+
+/* Extra extra small screens */
+@media (max-width: 320px) {
+    .about-artlog {
+        margin: 25px 0 0 0;
+        gap: 15px;
+        padding: 0;
+        width: 100%;
+        left: 0;
+        margin-left: 0;
+        position: relative;
+    }
+    
+    .about-description {
+        font-size: 0.95rem;
+        padding: 15px 12px;
+        border-radius: 14px;
+        line-height: 1.5;
+        width: auto;
+        max-width: calc(100% - 20px);
+        margin: 0 auto;
+    }
+    
+    .about-logo {
+        width: 130px;
+        max-width: calc(100% - 20px);
+        margin: 0 auto;
+    }
+    
+    .pastel-section {
+        height: 280px;
+        width: 100vw;
+        left: 50%;
+        margin-left: -50vw;
+        position: absolute;
+    }
+    
+    main h1 {
+        font-size: 2rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .main-btn {
+        padding: 16px 30px;
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
     }
 }
 
